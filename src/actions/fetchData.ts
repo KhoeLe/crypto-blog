@@ -7,7 +7,6 @@ import {
   RootState,
 } from "../types";
 
-
 export const fetchData = (page: number,currency: string,coinSearch: string , sortBy:string) => {
   return async (dispatch: Dispatch<FetchDataActionTypes>, getState: () => RootState) => {
     dispatch({ type: FETCH_DATA_REQUEST });
