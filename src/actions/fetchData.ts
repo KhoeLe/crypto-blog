@@ -7,12 +7,14 @@ import {
   RootState,
 } from "../types";
 
-export const fetchData = () => {
+
+export const fetchData = (page: number,currency: string,coinSearch: string , sortBy:string) => {
   return async (dispatch: Dispatch<FetchDataActionTypes>, getState: () => RootState) => {
     dispatch({ type: FETCH_DATA_REQUEST });
+    const url = process.env.URL_HOST_COINGECKO
 
     try {
-      const response = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en');
+      const response = await fetch(`${url}markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=${page}&sparkline=false&price_change_percentage=1h%2C24h%2C7d&locale=en`);
       const data = await response.json();
 
       dispatch({

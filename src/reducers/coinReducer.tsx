@@ -37,7 +37,7 @@ import {
       case FETCH_DATA_FAILURE:
         return {
           ...state,
-          loading: false,
+          loading: true,
           error: action.payload,
         };
       default:
