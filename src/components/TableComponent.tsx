@@ -5,7 +5,6 @@ import { RootState } from "../types";
 import store from "../store";
 import Spinner from "react-spinkit";
 import { Link } from "react-router-dom";
-import { NumericFormat } from 'react-number-format';
 
 function TableComponent() {
     const dispatch = useDispatch();
