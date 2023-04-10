@@ -1,9 +1,4 @@
-import {
-    FETCH_DATA_REQUEST,
-    FETCH_DATA_SUCCESS,
-    FETCH_DATA_FAILURE,
-    FetchDataActionTypes,
-  } from "../types";
+import { FETCH_DATA_FAILURE, FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS, FetchDataActionTypes } from "../types/fetchCoin";
 
   interface CoinState {
     coins: any[];
