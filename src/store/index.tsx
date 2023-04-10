@@ -1,10 +1,10 @@
 import { applyMiddleware, createStore } from "redux";
 import thunk from "redux-thunk";
-import coinReducer from "../reducers/coinReducer";
 import { composeWithDevTools } from "redux-devtools-extension";
+import rootReducer from "../reducers";
 
 const store = createStore(
-    coinReducer,
+    rootReducer,
     composeWithDevTools(applyMiddleware(thunk))
 );
 

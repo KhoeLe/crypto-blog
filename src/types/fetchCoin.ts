@@ -1,3 +1,4 @@
+import { coins } from ".";
 
 export const FETCH_DATA_REQUEST = 'FETCH_DATA_REQUEST';
 export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
@@ -22,12 +23,9 @@ export type FetchDataActionTypes =
   | FetchDataSuccessAction
   | FetchDataFailureAction;
 
-// src/types.ts
 
-
-export interface RootState {
-  coins: any[];
-  loading: boolean;
-  error: null | string;
-  actions: FetchDataActionTypes;
-}
+export interface CoinState {
+    coins: coins[];
+    loading: boolean;
+    error: null | string;
+  }

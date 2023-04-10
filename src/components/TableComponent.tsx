@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchData } from "../actions/fetchData";
+import { fetchAllCrypto } from "../actions/fetchData";
 import { RootState } from "../types";
 import store from "../store";
 import Spinner from "react-spinkit";
@@ -14,7 +14,7 @@ function TableComponent() {
 
     const { loading, error } = useSelector((state: RootState) => state);
     const coins = useSelector((state: RootState) =>
-        state.coins.slice(0, currentCoins)
+        state.coinReducer.coins.slice(0, currentCoins)
     );
 
     //My func logic
@@ -26,12 +26,13 @@ function TableComponent() {
     };
 
     useEffect(() => {
-        dispatch(fetchData(currentPage));
+        dispatch(fetchAllCrypto(currentPage));
     }, [dispatch, currentCoins, currentPage]);
 
-    console.log(coins.length > 10 ? coins.slice(0, currentCoins) : coins);
+    // console.log(coins.length > 10 ? coins.slice(0, currentCoins) : coins)
 
-    console.log(loading);
+    console.log(coins)
+
     return (
         <>
             <div className="flex flex-col mt-9 border border-gray-100 rounded max-h-fit ">
@@ -111,15 +112,10 @@ function TableComponent() {
                                         </Link>
                                     </td>
                                     <td className="py-4 ">
-                                        {/* ${Number(coin.current_price).toFixed(2)} */}
-                                        {/* <NumericFormat value={coin.current_price} prefix={'$'}  /> */}
                                         {new Intl.NumberFormat("en-IN", {
-                                            // style: "currency",
-                                            // currency: currency,
-                                         }).format(coin.current_price)}
-                                    </td>
-                                    <td className="py-4 sm:table-cell hidden">
-                                        {coin.total_volume}
+                                            style: "currency",
+                                            currency: "USD",
+                                        }).format(coin.current_price)}
                                     </td>
                                     <td
                                         className={
